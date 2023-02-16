@@ -201,9 +201,34 @@ class BinarySearchTree {
 
 }
 
-// const emptyTree = new BinarySearchTree();
-// const oneNodeTree = new BinarySearchTree();
-// oneNodeTree.root = new BSTNode(10);
+///! THURSDAY //////////////////
+
+/**
+ * Inserts a new node with the given newVal in the right place to preserver
+ * the order of this tree.
+ * - Time: O(?).
+ * - Space: O(?).
+ * @param {number} newVal The data to be added to a new node.
+ * @returns {BinarySearchTree} This tree.
+ */
+insert(newVal) {}
+
+/**
+ * Inserts a new node with the given newVal in the right place to preserver
+ * the order of this tree.
+ * - Time: O(?).
+ * - Space: O(?).
+ * @param {number} newVal The data to be added to a new node.
+ * @param {Node} curr The node that is currently accessed from the tree as
+ *    the tree is being traversed.
+ * @returns {BinarySearchTree} This tree.
+ */
+insertRecursive(newVal, curr = this.root) {}
+  }
+  
+  const emptyTree = new BinarySearchTree();
+  const oneNodeTree = new BinarySearchTree();
+  oneNodeTree.root = new BSTNode(10);
 
 /* twoLevelTree
         root
