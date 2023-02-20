@@ -457,7 +457,27 @@ toArrPostorder(node = this.root, vals = []) {
  * @param {Node} current The current node during the traversal of this tree.
  * @returns {Array<number>} The data of all nodes in BFS order.
  */
-toArrLevelorder(current = this.root) {}
+toArrLevelorder(current = this.root) {
+  if (this.isEmpty()) return;
+  //Sets a queue that will work as First In First Out.
+  const order = [current];
+  //Keeps track of values inserted as the queue is shifted.
+  const vals = [];
+
+  //Loop that keeps going while the queue isn't empty.
+  while (order.length > 0) {
+    //Sets current to whatever's been shifted from the start the queue.
+    let current = order.shift();
+    //Pushes current's data to vals.
+    vals.push(current.data);
+    //Checks if current has nodes to the left or right,
+    //then repopulates the queue
+    if (current.left) order.push(current.left);
+    if (current.right) order.push(current.right);
+  }
+
+  return vals;
+}
 
 /**
  * Recursively counts the total number of nodes in this tree.
@@ -466,7 +486,13 @@ toArrLevelorder(current = this.root) {}
  * @param {Node} node The current node during the traversal of this tree.
  * @returns {number} The total number of nodes.
  */
-size(node = this.root) {}
+size(node = this.root) {
+  if(node === null) return 0;
+
+  //Calls itself recursively for every single instance of a node found,
+  //Then adds 1 to the total number for every node found in total.
+  return this.size(node.left) + this.size(node.right) + 1;
+}
 
 /**
  * Calculates the height of the tree which is based on how many nodes from
@@ -476,7 +502,14 @@ size(node = this.root) {}
  * @param {Node} node The current node during traversal of this tree.
  * @returns {number} The height of the tree.
  */
-height(node = this.root) {}
+height(node = this.root) {
+  if(node === null) return 0;
+
+  //Calls itself recursively for every single instance of a node found,
+  //Then adds 1 coming up back when it compares which instance called
+  //itself recursively the most times.
+  return Math.max(this.height(node.left), this.height(node.right)) +1;
+}
 
 /**
  * Determines if this tree is a full tree. A full tree is a tree where every
@@ -486,11 +519,12 @@ height(node = this.root) {}
  * @param {Node} node The current node during traversal of this tree.
  * @returns {boolean} Indicates if this tree is full.
  */
-isFull(node = this.root) {}
+isFull(node = this.root) {
+  //Checks the maximum allowed size for current height against
+  //current size of tree. If they're the same, returns true.
+  return Math.pow(2, this.height())-1 === this.size();
+}
 
-
-
-  
 
   const emptyTree = new BinarySearchTree();
   const oneNodeTree = new BinarySearchTree();
