@@ -561,9 +561,9 @@ threeLevelTree.root.right = new BSTNode(15);
 // console.log(threeLevelTree.max());
 // console.log(threeLevelTree.maxRecursive());
 
-// console.log(threeLevelTree.contains(15))
-// console.log(threeLevelTree.contains(42))
-// console.log(threeLevelTree.range());
+console.log(threeLevelTree.contains(15))
+console.log(threeLevelTree.contains(42))
+console.log(threeLevelTree.range());
 
 /* fullTree
                     root
